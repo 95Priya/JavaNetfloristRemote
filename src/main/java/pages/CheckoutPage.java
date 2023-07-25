@@ -52,7 +52,8 @@ public class CheckoutPage
 	 @FindBy(css = "li.iconDCSprite.paymentOptions.paymentTab")
 		private WebElement paymentOptions;
 
-	 public void clickOnPaymentOptions() {
+	 public void clickOnPaymentOptions() 
+	 {
 		    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		    wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loaderMask")));
 
@@ -62,10 +63,10 @@ public class CheckoutPage
 		}
 	 
 		
-		@FindBy(id = "btnNonSouthAfricaVisaMaster")
+		@FindBy(xpath = "//input[@id='btnNonSouthAfricaVisaMaster']")
 		private WebElement payWithCard;
 		
-		@FindBy(xpath = "//div[@class='cardNumber']/input[@id='cardNumber']")
+		@FindBy(xpath = "//input[@id='cardNumber']")
 		private WebElement cardNumber;
 		
 		@FindBy(id = "expiryMonth")
@@ -102,13 +103,16 @@ public class CheckoutPage
              
              
 			
-			WebElement card = wait.until(ExpectedConditions.elementToBeClickable(cardNumber));
+			WebElement card = wait.until(ExpectedConditions.visibilityOf(cardNumber));
 			//card.click();
 		    card.sendKeys(cardnum);
 		    
-		    try {
+		    try 
+		    {
 		        Thread.sleep(500); // Adjust the sleep duration as needed
-		    } catch (InterruptedException e) {
+		    } 
+		    catch (InterruptedException e)
+		    {
 		        e.printStackTrace();
 		    }
 		    
@@ -116,9 +120,13 @@ public class CheckoutPage
 		    Select selectMonths = new Select(selectMonth);
 		    selectMonths.selectByValue(expirationMonth);
 		    
-		    try {
+		    try 
+		    {
+		    	
 		        Thread.sleep(500); // Adjust the sleep duration as needed
-		    } catch (InterruptedException e) {
+		    } 
+		    catch (InterruptedException e) 
+		    {
 		        e.printStackTrace();
 		    }
 		    

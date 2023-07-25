@@ -16,6 +16,7 @@ public class FlowerProduct
 {
 	public BaseSearchTest baseSearchTest;	
 	public String productCode;
+	public String address;
 	
 	 @BeforeMethod
 	    public void setup() 
@@ -26,29 +27,19 @@ public class FlowerProduct
 	    }
 
 	
-	
-    List<String> addresses = new ArrayList<String>() {{
-        add("Parade hotel, 191 O R Tambo Parade , marine parade ,Business");
-        add("Hillcrest Primary School, 5 Bollihope Cres, Mowbray,School");
-        add("34 Barbet ,Crescent, Midrand,Residence");
-        add("Baragwanath Hospital , 26 Chris Hani Rd, Diepkloof ,Hospital");
-    }};
-    
-	
     @Test
     public void FlowerAdd1() throws InterruptedException, TimeoutException 
     {
     	productCode = baseSearchTest.getProperty("productcode1");
-
-        baseSearchTest.SearchProduct(productCode, addresses.get(0), "Business");
+    	address=baseSearchTest.getProperty("address1");
+        baseSearchTest.SearchProduct(productCode, address, "Business");
     }
     
     @Test
     public void FlowerAdd2() throws InterruptedException, TimeoutException 
     {
-    	productCode = baseSearchTest.getProperty("productcode1");
-
-        baseSearchTest.SearchProduct(productCode, addresses.get(1), "School");
+    	address=baseSearchTest.getProperty("address2");
+        baseSearchTest.SearchProduct(productCode, address, "Business");
     }
     
     @Test
@@ -56,20 +47,22 @@ public class FlowerProduct
     {
     	productCode = baseSearchTest.getProperty("productcode1");
 
-        baseSearchTest.SearchProduct(productCode, addresses.get(2), "Residence");
+    	address=baseSearchTest.getProperty("address3");
+        baseSearchTest.SearchProduct(productCode, address, "Business");
     }
     @Test
     public void FlowerAdd4() throws InterruptedException, TimeoutException 
     {
     	productCode = baseSearchTest.getProperty("productcode1");
 
-        baseSearchTest.SearchProduct(productCode, addresses.get(3), "Hospital");
+    	address=baseSearchTest.getProperty("address4");
+        baseSearchTest.SearchProduct(productCode, address, "Business");
     }
-    
-    @AfterMethod
-    public void teardown() 
-    {
-        baseSearchTest.teardown();
-    }
+//    
+//    @AfterMethod
+//    public void teardown() 
+//    {
+//        baseSearchTest.teardown();
+//    }
 
 }

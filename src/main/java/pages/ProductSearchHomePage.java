@@ -48,11 +48,11 @@ public class ProductSearchHomePage {
 	}
 
 	
-	@FindBy(id = "inputSearch")
+	@FindBy(xpath = "//*[@id='inputSearch']")
 	private WebElement searchField;
 
 	public void clickOnSearch(String productCode) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Adjust the timeout value as needed
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60)); // Adjust the timeout value as needed
 		wait.until(ExpectedConditions.visibilityOf(searchField));
 
 		searchField.sendKeys(productCode);
@@ -70,7 +70,7 @@ public class ProductSearchHomePage {
 	public void selectProduct() throws InterruptedException {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 		WebElement element = wait.until(ExpectedConditions
-				.elementToBeClickable(By.xpath("//*[@id='SearchContainer']/div/div/div/div[4]/div[2]/div/a[1]")));
+				.visibilityOfElementLocated(By.xpath("//*[@id='SearchContainer']/div/div/div/div[4]/div[2]/div/a[1]")));
 		System.out.println("Product Name is : "+element.getText());
 		element.click();
 	}
