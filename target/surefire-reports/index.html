@@ -178,11 +178,11 @@
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite thread-count=&quot;4&quot; parallel=&quot;tests&quot; name=&quot;Test Suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
+&lt;suite thread-count=&quot;4&quot; parallel=&quot;tests&quot; name=&quot;Test Suite&quot; guice-stage=&quot;DEVELOPMENT&quot; verbose=&quot;0&quot;&gt;
   &lt;listeners&gt;
     &lt;listener class-name=&quot;Tests.TestListener&quot;/&gt;
   &lt;/listeners&gt;
-  &lt;test thread-count=&quot;4&quot; parallel=&quot;tests&quot; name=&quot;Test&quot;&gt;
+  &lt;test thread-count=&quot;4&quot; parallel=&quot;tests&quot; name=&quot;Test&quot; verbose=&quot;0&quot;&gt;
     &lt;classes&gt;
       &lt;class name=&quot;Tests.FlowerProduct&quot;/&gt;
     &lt;/classes&gt;
@@ -226,21 +226,21 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(4);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'FlowerAdd4')
+data.setCell(0, 1, 'FlowerAdd3')
 data.setCell(0, 2, 'Tests.FlowerProduct')
-data.setCell(0, 3, 53204);
+data.setCell(0, 3, 49064);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'FlowerAdd1')
+data.setCell(1, 1, 'FlowerAdd4')
 data.setCell(1, 2, 'Tests.FlowerProduct')
-data.setCell(1, 3, 49673);
+data.setCell(1, 3, 45846);
 data.setCell(2, 0, 2)
 data.setCell(2, 1, 'FlowerAdd2')
 data.setCell(2, 2, 'Tests.FlowerProduct')
-data.setCell(2, 3, 48578);
+data.setCell(2, 3, 45138);
 data.setCell(3, 0, 3)
-data.setCell(3, 1, 'FlowerAdd3')
+data.setCell(3, 1, 'FlowerAdd1')
 data.setCell(3, 2, 'Tests.FlowerProduct')
-data.setCell(3, 3, 47103);
+data.setCell(3, 3, 44646);
 window.suiteTableData['Test_Suite']= { tableData: data, tableDiv: 'times-div-Test_Suite'}
 return data;
 }
@@ -278,47 +278,47 @@ return data;
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">FlowerAdd1</span>
-                <span class="method-start">17718 ms</span>
+                <span class="method-start">17084 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">close([TestResult name=FlowerAdd1 status=SUCCESS method=FlowerProduct.FlowerAdd1()[pri:0, instance:Tests.F...)</span>
-                <span class="method-start">67394 ms</span>
+                <span class="method-start">61731 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-method before">
                 <span class="method-name">setup</span>
-                <span class="method-start">67528 ms</span>
+                <span class="method-start">61917 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">FlowerAdd2</span>
-                <span class="method-start">82985 ms</span>
+                <span class="method-start">76914 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">close([TestResult name=FlowerAdd2 status=SUCCESS method=FlowerProduct.FlowerAdd2()[pri:0, instance:Tests.F...)</span>
-                <span class="method-start">131566 ms</span>
+                <span class="method-start">122053 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-method before">
                 <span class="method-name">setup</span>
-                <span class="method-start">131755 ms</span>
+                <span class="method-start">122239 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">FlowerAdd3</span>
-                <span class="method-start">148518 ms</span>
+                <span class="method-start">141559 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">close([TestResult name=FlowerAdd3 status=SUCCESS method=FlowerProduct.FlowerAdd3()[pri:0, instance:Tests.F...)</span>
-                <span class="method-start">195623 ms</span>
+                <span class="method-start">190624 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-method before">
                 <span class="method-name">setup</span>
-                <span class="method-start">195801 ms</span>
+                <span class="method-start">190762 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">FlowerAdd4</span>
-                <span class="method-start">211336 ms</span>
+                <span class="method-start">205658 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">close([TestResult name=FlowerAdd4 status=SUCCESS method=FlowerProduct.FlowerAdd4()[pri:0, instance:Tests.F...)</span>
-                <span class="method-start">264542 ms</span>
+                <span class="method-start">251504 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

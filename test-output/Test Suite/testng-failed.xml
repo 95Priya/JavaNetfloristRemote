@@ -8,9 +8,12 @@
     <classes>
       <class name="Tests.FlowerProduct">
         <methods>
+          <include name="FlowerAdd3"/>
+          <include name="FlowerAdd4"/>
           <include name="FlowerAdd1"/>
           <include name="FlowerAdd2"/>
           <include name="setup"/>
+          <include name="close"/>
         </methods>
       </class> <!-- Tests.FlowerProduct -->
     </classes>

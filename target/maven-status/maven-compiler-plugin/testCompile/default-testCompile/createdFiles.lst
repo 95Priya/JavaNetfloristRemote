@@ -1,0 +1,7 @@
+Tests\PlantProduct.class
+Tests\BakeryProduct.class
+Tests\TestListener.class
+Tests\HamperProduct.class
+dataProvider\ConfigFileReader.class
+Tests\FlowerProduct.class
+Tests\SearchForProductTest.class
