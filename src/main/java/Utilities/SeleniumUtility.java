@@ -4,8 +4,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.NoSuchElementException;
 import java.util.Properties;
 //import java.util.concurrent.TimeUnit;
@@ -27,15 +29,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class SeleniumUtility 
-{
+public class SeleniumUtility {
 
-	
-	public static WebDriver driver = null;
+	private WebDriver driver;
 	public static Actions action = null;
 	public WebDriverWait wait;
-	
-	
+
+	public SeleniumUtility(WebDriver driver) {
+		this.driver = driver;
+	}
+
 	public WebDriver setUp(String browserName, String appUrl) {
 
 		if (browserName.equalsIgnoreCase("Chrome")) {
@@ -50,21 +53,20 @@ public class SeleniumUtility
 			driver = new InternetExplorerDriver();
 		} else if (browserName.equalsIgnoreCase("firefox")) {
 			// use setup method of WebDriverManager
-			 WebDriverManager.firefoxdriver().setup();
+			WebDriverManager.firefoxdriver().setup();
 			// step2: create an instance of Chrome Browser
 			driver = new FirefoxDriver();
 		}
 		// maximize browser
 		driver.manage().window().maximize();
 		// implicit wait
-		//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		 wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		// driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		driver.get(appUrl);
 		action = new Actions(driver);
 		return driver;
 	}
-	
-	
+
 	public void performClick(WebElement element) {
 		element.click();
 	}
@@ -118,21 +120,34 @@ public class SeleniumUtility
 		return prop;
 	}
 
-	public void takeScreenshot(String testName) {
-        // Capture the screenshot as a file
-        File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+	public void takeScreenshot(String methodName) {
+		try {
+			
+			TakesScreenshot ts = (TakesScreenshot) driver;
 
-        // Define the destination path for the screenshot
-        String destinationPath = "Screenshots/" + testName + ".png";
+			// Get the screenshot as a file
+			File srcFile = ts.getScreenshotAs(OutputType.FILE);
 
-        try {
-            // Copy the screenshot file to the desired location
-            FileUtils.copyFile(screenshotFile, new File(destinationPath));
-            System.out.println("Screenshot saved: " + destinationPath);
-        } catch (IOException e) {
-            System.out.println("Failed to save screenshot: " + e.getMessage());
-        }
-    }
+			// Get the current date and time
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
+			Date currentDate = new Date();
+			String timestamp = dateFormat.format(currentDate);
+
+			// Generate the screenshot name with the method name and timestamp
+			String screenshotName = methodName + "_" + timestamp + ".png";
+
+			// Define the destination file path and name
+			String destinationFilePath = "D:\\PriyankaJavaAutomation\\NetFlorist\\src\\test\\resources\\Screenshots\\" + screenshotName;
+		
+
+			// Copy the screenshot file to the destination
+			FileUtils.copyFile(srcFile, new File(destinationFilePath));
+
+			System.out.println("Screenshot taken: " + destinationFilePath);
+		} catch (IOException e) {
+			System.out.println("Failed to capture screenshot: " + e.getMessage());
+		}
+	}
 
 	public void performDranAndDrop(WebElement src, WebElement target) {
 		action.moveToElement(src).dragAndDrop(src, target).build().perform();
@@ -169,63 +184,61 @@ public class SeleniumUtility
 	public void switchToRequiredFrameUsingIndex(int index) {
 		driver.switchTo().frame(index);
 	}
-	
+
 	public void switchControlBackToMainPage() {
 		driver.switchTo().defaultContent();
 	}
-	
+
 	public WebElement getActiveElement() {
 		return driver.switchTo().activeElement();
 	}
-	
+
 	public String getPageTitle() {
 		return driver.getTitle();
 	}
-	
+
 	public String getPageUrl() {
 		return driver.getCurrentUrl();
 	}
 
-	public void SelectDate(WebDriver driver, LocalDate date) 
-	{
-	    WebElement dateText = driver.findElement(By.id("txtSelectDate"));
-	    dateText.click();
+	public void SelectDate(WebDriver driver, LocalDate date) {
+		WebElement dateText = driver.findElement(By.id("txtSelectDate"));
+		dateText.click();
 
-	    // Calculate the row and column values based on the provided date
-	    int row = (date.getDayOfMonth() + 6) / 7;
-	    int col = ((date.getDayOfMonth() - 1) % 7) + 1;
+		// Calculate the row and column values based on the provided date
+		int row = (date.getDayOfMonth() + 6) / 7;
+		int col = ((date.getDayOfMonth() - 1) % 7) + 1;
 
-	    By dateLocator = By.xpath("//div[@id='ui-datepicker-div']/table/tbody/tr[" + row + "]/td[" + col + "]");
+		By dateLocator = By.xpath("//div[@id='ui-datepicker-div']/table/tbody/tr[" + row + "]/td[" + col + "]");
 
-	    WebElement selectedDate = driver.findElement(dateLocator);
-	    selectedDate.click();
+		WebElement selectedDate = driver.findElement(dateLocator);
+		selectedDate.click();
 	}
-	
-	  public void SelectDateFromCalendar(WebDriver driver, String desiredDate)
-	     {
-	    	    String dateXPath = String.format("//div[@id='pddDatePicker']//td/a[contains(text(), '%s')]", desiredDate);
 
-	    	    // Retry mechanism with a maximum number of retries
-	    	    int maxRetries = 3;
-	    	    int retries = 0;
-	    	    boolean clicked = false;
+	public void SelectDateFromCalendar(WebDriver driver, String desiredDate) {
+		String dateXPath = String.format("//div[@id='pddDatePicker']//td/a[contains(text(), '%s')]", desiredDate);
 
-	    	    while (!clicked && retries < maxRetries) {
-	    	        try {
-	    	            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	    	            WebElement dateElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(dateXPath)));
-	    	            dateElement.click();
-	    	            clicked = true;
-	    	        } catch (StaleElementReferenceException e) {
-	    	            retries++;
-	    	            System.out.println("StaleElementReferenceException occurred. Retrying...");
-	    	        }
-	    	    }
+		// Retry mechanism with a maximum number of retries
+		int maxRetries = 3;
+		int retries = 0;
+		boolean clicked = false;
 
-	    	    if (!clicked) {
-	    	        System.out.println("Could not click on the date element after " + maxRetries + " retries.");
-	    	    }
+		while (!clicked && retries < maxRetries) {
+			try {
+				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+				WebElement dateElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(dateXPath)));
+				dateElement.click();
+				clicked = true;
+			} catch (StaleElementReferenceException e) {
+				retries++;
+				System.out.println("StaleElementReferenceException occurred. Retrying...");
+			}
+		}
 
-	     }
-	
+		if (!clicked) {
+			System.out.println("Could not click on the date element after " + maxRetries + " retries.");
+		}
+
+	}
+
 }

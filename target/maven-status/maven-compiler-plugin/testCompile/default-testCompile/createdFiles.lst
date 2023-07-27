@@ -1,6 +1,0 @@
-Tests\PlantProduct.class
-Listeners\TestListener.class
-dataProvider\ConfigFileReader.class
-Tests\BaseSearchTest.class
-Tests\HamperProduct.class
-Tests\FlowerProduct.class

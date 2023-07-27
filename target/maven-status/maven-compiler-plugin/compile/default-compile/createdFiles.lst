@@ -1,6 +1,0 @@
-pages\CheckoutPage.class
-Utilities\DateUtility.class
-Utilities\ExcelUtility.class
-pages\ProductSearchHomePage.class
-Utilities\SeleniumUtility.class
-Utilities\ExcelUtility$1.class

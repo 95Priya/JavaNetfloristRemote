@@ -99,7 +99,8 @@ public class ProductSearchHomePage {
 	@FindBy(id = "btnLogin")
 	private WebElement loginButton;
 
-	public void performLogin(String username, String password) {
+	public void performLogin(String username, String password) 
+	{
 		
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.elementToBeClickable(login));
@@ -118,7 +119,8 @@ public class ProductSearchHomePage {
 	@FindBy(id = "telNo")
 	private WebElement phoneNumber;
 
-	public void fillRecipientDetails(String fName, String lName, String telNo) {
+	public void fillRecipientDetails(String fName, String lName, String telNo) 
+	{
 		firstName.sendKeys(fName);
 		lasttName.sendKeys(lName);
 		phoneNumber.sendKeys(telNo);
@@ -136,7 +138,8 @@ public class ProductSearchHomePage {
 	@FindBy(id = "suburb")
 	private WebElement suburbName;
 
-	public void DeliveryDetails(String strtName, String apartment, String suburb, String addressType) {
+	public void DeliveryDetails(String strtName, String apartment, String suburb, String addressType) 
+	{
 		streetName.sendKeys(strtName);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.elementToBeClickable(typeOfAdd));
@@ -151,7 +154,8 @@ public class ProductSearchHomePage {
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("/html/body/ul/li")));
 
 		List<WebElement> suburbsList = driver.findElements(By.xpath("/html/body/ul/li"));
-		if (!suburbsList.isEmpty()) {
+		if (!suburbsList.isEmpty()) 
+		{
 			suburbsList.get(0).click();
 		}
 
@@ -160,47 +164,60 @@ public class ProductSearchHomePage {
 	@FindBy(xpath = "//button[contains(text(), 'Next – Delivery Date')]")
 	private WebElement nextDeliveryDate;
 
-	public void selectDate(String dateToSelect) {
+	public void selectDate(String dateToSelect) 
+	{
 		By dateLocator = By.xpath("//*[@id='pddDatePicker']/div/table/tbody/tr[4]/td[6]/a");
 
 		// Retry mechanism to handle StaleElementReferenceException
-		for (int attempt = 1; attempt <= 5; attempt++) {
-			try {
+		for (int attempt = 1; attempt <= 5; attempt++) 
+		{
+			try 
+			{
 				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 				WebElement dateElement = wait.until(ExpectedConditions.elementToBeClickable(dateLocator));
 				dateElement.click();
 				break; // Successfully clicked, exit the loop
-			} catch (org.openqa.selenium.StaleElementReferenceException e) {
+			}
+			catch (org.openqa.selenium.StaleElementReferenceException e) 
+			{
 				System.out.println("StaleElementReferenceException occurred. Retrying attempt: " + attempt);
 			}
 		}
 	}
 
-	public void nextDate() {
+	
+	public void nextDate() 
+	{
 		nextDeliveryDate.click();
 	}
 
-	public void SelectDateFromCalendar(WebDriver driver, String desiredDate) {
+	
+	public void SelectDateFromCalendar(WebDriver driver, String desiredDate)
+	{
 		String dateXPath = String.format("//div[@id='pddDatePicker']//td/a[contains(text(), '%s')]", desiredDate);
-
 		// Retry mechanism with a maximum number of retries
 		int maxRetries = 3;
 		int retries = 0;
 		boolean clicked = false;
 
-		while (!clicked && retries < maxRetries) {
-			try {
-				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-				WebElement dateElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(dateXPath)));
+		while (!clicked && retries < maxRetries)
+		{
+			try
+			{
+				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+				WebElement dateElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(dateXPath)));
 				dateElement.click();
 				clicked = true;
-			} catch (StaleElementReferenceException e) {
+			}
+			catch (StaleElementReferenceException e) 
+			{
 				retries++;
 				System.out.println("StaleElementReferenceException occurred. Retrying...");
 			}
 		}
 
-		if (!clicked) {
+		if (!clicked) 
+		{
 			System.out.println("Could not click on the date element after " + maxRetries + " retries.");
 		}
 
@@ -223,14 +240,12 @@ public class ProductSearchHomePage {
 
 	 public void AddToFinalBasket()
      {
-		 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	        WebElement finalBasketElement = wait.until(ExpectedConditions.elementToBeClickable(finalBasket));
 	        finalBasketElement.click();
+	        System.out.println("Product added to basket");
+	        
      }
 	
-	 
-	 
-	 
-	 
-}
+	}
 
