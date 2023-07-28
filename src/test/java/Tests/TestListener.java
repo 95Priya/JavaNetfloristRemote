@@ -15,22 +15,28 @@ import Utilities.SeleniumUtility;
 @Listeners(TestListener.class)
 public class TestListener implements ITestListener
 {
-	
+	private ExtentReports extent;
 	private WebDriver driver;
     private SeleniumUtility S1;
+    
+    public TestListener() {
+        // Do nothing on test start
+    }
+
 	
 	@Override
     public void onTestStart(ITestResult result)
     {
-        // Do nothing on test start
+		  System.out.println("Test Started: " + result.getMethod().getMethodName());
     }
 	
 	
 	 @Override
 	    public void onTestSuccess(ITestResult result) 
 	    {
-		    String methodName = result.getMethod().getMethodName();
-		
+		    //String methodName = result.getMethod().getMethodName();
+		    System.out.println("Test Passed: " + result.getMethod().getMethodName());
+
 
 	    }
 
@@ -39,7 +45,7 @@ public class TestListener implements ITestListener
     {
     	String methodName = result.getMethod().getMethodName();
         captureScreenshot(methodName);
-
+        
        
     }
 
@@ -47,29 +53,31 @@ public class TestListener implements ITestListener
     @Override
     public void onTestSkipped(ITestResult result) 
     {
-    	String methodName = result.getMethod().getMethodName();
-        
+    	//String methodName = result.getMethod().getMethodName();
+    	System.out.println("Test Skipped: " + result.getMethod().getMethodName());
     }
+
 
     @Override
     public void onTestFailedButWithinSuccessPercentage(ITestResult result) 
     {
-        // Do nothing
+    	System.out.println("Test Failed within Success Percentage: " + result.getMethod().getMethodName());
+
     }
 
     @Override
     public void onStart(ITestContext context)
     {
-//    	String extentReportPath = ".\\src\\test\\resources\\ExtentReports\\ExtentReport.html";
-//    	extent = new ExtentReports();
-//        ExtentSparkReporter spark = new ExtentSparkReporter(extentReportPath);
-//        extent.attachReporter(spark);
+    	String extentReportPath = ".\\src\\test\\resources\\ExtentReports\\ExtentReport.html";
+    	extent = new ExtentReports();
+        ExtentSparkReporter spark = new ExtentSparkReporter(extentReportPath);
+        extent.attachReporter(spark);
     }
 
     @Override
     public void onFinish(ITestContext context)
     {
-    //	extent.flush(); 
+    	extent.flush(); 
     }
 
     private void captureScreenshot(String methodName)

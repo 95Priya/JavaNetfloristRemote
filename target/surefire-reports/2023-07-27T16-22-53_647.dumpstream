@@ -1,5 +1,0 @@
-# Created at 2023-07-27T16:22:53.813
-Boot Manifest-JAR contains absolute paths in classpath 'D:\PriyankaJavaAutomation\NetFlorist\target\test-classes'
-Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
-'other' has different root
-

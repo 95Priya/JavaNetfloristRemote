@@ -13,6 +13,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import Utilities.SeleniumUtility;
 import dataProvider.ConfigFileReader;
 
 @Listeners(TestListener.class)
@@ -23,6 +24,8 @@ public class FlowerProduct
 	public String productCode;
 	public String address;
     public String addressType;
+    private SeleniumUtility S1;
+
     
     
     @BeforeMethod
@@ -30,13 +33,13 @@ public class FlowerProduct
 	 {
 		    baseSearchTest = new SearchForProductTest();
 	        baseSearchTest.setup();
-	       
+	        S1 = new SeleniumUtility(baseSearchTest.driver); 
 	    }
 
     @Test
     public void FlowerAdd1() throws InterruptedException, TimeoutException 
     {
-    	System.out.println("Test 1");
+    	
     	productCode = baseSearchTest.getProperty("productcode1");
     	address=baseSearchTest.getProperty("address1");
     	addressType = baseSearchTest.getProperty("addressType1");
@@ -46,7 +49,7 @@ public class FlowerProduct
     @Test
     public void FlowerAdd2() throws InterruptedException, TimeoutException 
     {
-    	System.out.println("Test 2");
+    	
     	productCode = baseSearchTest.getProperty("productcode1");
     	address=baseSearchTest.getProperty("address2");
     	addressType = baseSearchTest.getProperty("addressType2");
@@ -56,7 +59,7 @@ public class FlowerProduct
     @Test
     public void FlowerAdd3() throws InterruptedException, TimeoutException 
     {
-    	System.out.println("Test 3");
+    	
     	productCode = baseSearchTest.getProperty("productcode1");
     	address=baseSearchTest.getProperty("address3");
     	addressType = baseSearchTest.getProperty("addressType3");
@@ -65,7 +68,7 @@ public class FlowerProduct
     @Test
     public void FlowerAdd4() throws InterruptedException, TimeoutException 
     {
-    	System.out.println("Test 4");
+    	
     	productCode = baseSearchTest.getProperty("productcode1");
     	address=baseSearchTest.getProperty("address4");
     	addressType = baseSearchTest.getProperty("addressType4");
