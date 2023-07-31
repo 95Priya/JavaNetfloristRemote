@@ -13,7 +13,7 @@ import org.testng.annotations.DataProvider;
 public class ConfigFileReader {
 
 	private Properties properties;
-	private final String propertyFilePath= "D:\\PriyankaJavaAutomation\\NetFlorist\\src\\test\\resources\\AppData\\LoginInfo.properties";
+	private final String propertyFilePath= ".\\src\\test\\resources\\AppData\\LoginInfo.properties";
 
 	
 	public ConfigFileReader(){
