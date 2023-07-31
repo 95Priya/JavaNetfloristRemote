@@ -6,13 +6,10 @@
         <listener class-name="Tests.TestListener" />
     </listeners>
     
-   <test name="Test">
+    <test name="Test">
         <classes>
-            <class name="Tests.FlowerProduct">
-                <methods>
-                    <include name="FlowerAdd1" />
-                </methods>
-            </class>
+            <class name="Tests.FlowerProduct"/>
+            
         </classes>
     </test>
 </suite>
