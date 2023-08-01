@@ -60,21 +60,23 @@ public class ProductSearchHomePage {
 	}
 
 	
-	public List<WebElement> getProductsList()
-	{
-		return driver.findElements(By.xpath("//*[@id='SearchContainer']/div/div/div/div[4]/div[2]/div/a"));
-
-	}
+//	public List<WebElement> getProductsList()
+//	{
+//		return driver.findElements(By.xpath("//*[@id='SearchContainer']/div/div/div/div[4]/div[2]/div/a"));
+//
+//	}
 
 	
-	public void selectProduct() throws InterruptedException
+	public void selectProduct() throws InterruptedException, TimeoutException 
 	{
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-		WebElement element = wait.until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("//*[@id='SearchContainer']/div/div/div/div[4]/div[2]/div/a[1]")));
-		System.out.println("Product Name is : "+element.getText());
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+	    By elementLocator = By.xpath("//*[@id='SearchContainer']/div/div/div/div[4]/div[2]/div/a[1]");
+
+	    WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(elementLocator));
+		System.out.println("Product Name is : " + element.getText());
 		element.click();
 	}
+
 
 	
 	@FindBy(id = "ButtonBottomArea")
