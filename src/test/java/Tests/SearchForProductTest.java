@@ -17,6 +17,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.ie.InternetExplorerOptions;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -49,16 +54,13 @@ public class SearchForProductTest extends ConfigFileReader {
 	@BeforeMethod
 	public void setup() 
 	{
-		WebDriverManager.chromedriver().setup();
-		ChromeOptions options = new ChromeOptions();
-		//options.addArguments("--headless");
-		options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
-		// options.setPageLoadStrategy(PageLoadStrategy.EAGER);
-		driver = new ChromeDriver(options);
-		driver.manage().window().maximize();
-		S1 = new SeleniumUtility(driver);
-		configFileReader = new ConfigFileReader();
-		String baseURL = configFileReader.getApplicationUrl();
+		   WebDriverManager.edgedriver().setup();
+		   EdgeOptions options = new EdgeOptions();
+		    driver = new EdgeDriver(options);	
+		    driver.manage().window().maximize();
+		    S1 = new SeleniumUtility(driver);
+		    configFileReader = new ConfigFileReader();
+		    String baseURL = configFileReader.getApplicationUrl();
 
 		driver.get(baseURL);
 		productSearch = new ProductSearchHomePage(driver);
