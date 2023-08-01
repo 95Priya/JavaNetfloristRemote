@@ -3,12 +3,16 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Tests.PlantProduct">
+      <class name="Tests.FlowerProduct">
         <methods>
+          <include name="FlowerAdd3"/>
+          <include name="FlowerAdd4"/>
+          <include name="FlowerAdd1"/>
+          <include name="FlowerAdd2"/>
           <include name="setup"/>
-          <include name="PlantProduct2"/>
+          <include name="close"/>
         </methods>
-      </class> <!-- Tests.PlantProduct -->
+      </class> <!-- Tests.FlowerProduct -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -56,8 +56,7 @@ public class SearchForProductTest extends ConfigFileReader {
 	 {
 	    WebDriverManager.chromedriver().setup();
 	    ChromeOptions options = new ChromeOptions();
-	    options.setPageLoadStrategy(PageLoadStrategy.EAGER);
-	    
+	    options.addArguments("headless");
 	    driver = new ChromeDriver(options);
 	    driver.manage().window().maximize();
 	    S1 = new SeleniumUtility(driver);

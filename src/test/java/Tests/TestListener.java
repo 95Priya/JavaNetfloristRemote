@@ -1,6 +1,7 @@
 package Tests;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -20,7 +21,8 @@ public class TestListener implements ITestListener
     private SeleniumUtility S1;
     
     public TestListener() {
-        // Do nothing on test start
+        
+    	 S1 = new SeleniumUtility(driver);
     }
 
 	
@@ -45,8 +47,6 @@ public class TestListener implements ITestListener
     {
     	String methodName = result.getMethod().getMethodName();
         captureScreenshot(methodName);
-        
-       
     }
 
    
