@@ -53,18 +53,20 @@ public class SearchForProductTest extends ConfigFileReader {
 
 	@BeforeMethod
 	public void setup() 
-	{
-		   WebDriverManager.edgedriver().setup();
-		   EdgeOptions options = new EdgeOptions();
-		    driver = new EdgeDriver(options);	
-		    driver.manage().window().maximize();
-		    S1 = new SeleniumUtility(driver);
-		    configFileReader = new ConfigFileReader();
-		    String baseURL = configFileReader.getApplicationUrl();
+	 {
+	    WebDriverManager.chromedriver().setup();
+	    ChromeOptions options = new ChromeOptions();
+	    options.setPageLoadStrategy(PageLoadStrategy.EAGER);
+	    
+	    driver = new ChromeDriver(options);
+	    driver.manage().window().maximize();
+	    S1 = new SeleniumUtility(driver);
+	    configFileReader = new ConfigFileReader();
+	    String baseURL = configFileReader.getApplicationUrl();
 
-		driver.get(baseURL);
-		productSearch = new ProductSearchHomePage(driver);
-		checkout = new CheckoutPage(driver);
+	    driver.get(baseURL);
+	    productSearch = new ProductSearchHomePage(driver); 
+	    checkout = new CheckoutPage(driver);
 	}
 
 	public void SearchProduct(String productCode, String address, String addressType)
