@@ -72,7 +72,7 @@ public class ProductSearchHomePage {
 	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 	    By elementLocator = By.xpath("//*[@id='SearchContainer']/div/div/div/div[4]/div[2]/div/a[1]");
 
-	    WebElement element = wait.until(ExpectedConditions.elementToBeClickable(elementLocator));
+	    WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(elementLocator));
 		System.out.println("Product Name is : " + element.getText());
 		element.click();
 	}

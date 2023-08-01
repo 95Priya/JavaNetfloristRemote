@@ -9,9 +9,6 @@
     <test name="Test">
         <classes>
             <class name="Tests.FlowerProduct">
-				<methods>
-                    <include name="FlowerAdd1" />
-                </methods>
                 </class>
             
         </classes>
