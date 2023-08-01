@@ -67,14 +67,23 @@ public class ProductSearchHomePage {
 //	}
 
 	
-	public void selectProduct() throws InterruptedException, TimeoutException 
-	{
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+	public void selectProduct() {
 	    By elementLocator = By.xpath("//*[@id='SearchContainer']/div/div/div/div[4]/div[2]/div/a[1]");
 
-	    WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(elementLocator));
-		System.out.println("Product Name is : " + element.getText());
-		element.click();
+	    try
+	    {
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+	        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(elementLocator));
+	        System.out.println("Product Name is : " + element.getText());
+	        element.click();
+	    } 
+	    catch (NoSuchElementException e) {
+	        System.out.println("The element was not found on the page.");
+	        e.printStackTrace();
+	    } catch (Exception e) {
+	        System.out.println("An unexpected exception occurred.");
+	        e.printStackTrace();
+	    }
 	}
 
 
