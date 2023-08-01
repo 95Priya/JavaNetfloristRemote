@@ -72,8 +72,8 @@ public class ProductSearchHomePage {
 
 	    try
 	    {
-	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-	        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(elementLocator));
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+	        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(elementLocator));
 	        System.out.println("Product Name is : " + element.getText());
 	        element.click();
 	    } 
