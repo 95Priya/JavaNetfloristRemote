@@ -67,8 +67,9 @@ public class ProductSearchHomePage {
 	}
 
 	
-	public void selectProduct() throws InterruptedException {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+	public void selectProduct() throws InterruptedException
+	{
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 		WebElement element = wait.until(ExpectedConditions
 				.visibilityOfElementLocated(By.xpath("//*[@id='SearchContainer']/div/div/div/div[4]/div[2]/div/a[1]")));
 		System.out.println("Product Name is : "+element.getText());
