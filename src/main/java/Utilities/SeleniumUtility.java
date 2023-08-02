@@ -32,11 +32,14 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class SeleniumUtility {
 
 	private WebDriver driver;
+	private TakesScreenshot ts;
 	public static Actions action = null;
 	public WebDriverWait wait;
 
-	public SeleniumUtility(WebDriver driver) {
-		this.driver = driver;
+	public SeleniumUtility(WebDriver driver) 
+	{
+		
+		this.ts = (TakesScreenshot) driver;
 	}
 
 	public WebDriver setUp(String browserName, String appUrl) {
@@ -94,10 +97,6 @@ public class SeleniumUtility {
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
 
-//	public List<WebElement> getAllElements(String locatorType,String locatorValue){
-//		//switch  case
-//	}
-
 	public String getValueFromPropertyFile(String fileName, String key) {
 		Properties prop = getPropertyFile(fileName);
 		return prop.getProperty(key);
@@ -123,9 +122,6 @@ public class SeleniumUtility {
 	public void takeScreenshot(String methodName) {
 		try {
 			
-			TakesScreenshot ts = (TakesScreenshot) driver;
-
-			// Get the screenshot as a file
 			File srcFile = ts.getScreenshotAs(OutputType.FILE);
 
 			// Get the current date and time
@@ -134,10 +130,10 @@ public class SeleniumUtility {
 			String timestamp = dateFormat.format(currentDate);
 
 			// Generate the screenshot name with the method name and timestamp
-			String screenshotName = methodName + "_" + timestamp + ".png";
+			 String screenshotName = methodName + "_" + timestamp + ".png";
 
 			// Define the destination file path and name
-			String destinationFilePath = "D:\\PriyankaJavaAutomation\\NetFlorist\\src\\test\\resources\\Screenshots\\" + screenshotName;
+			String destinationFilePath = ".\\src\\test\\resources\\Screenshots\\" + screenshotName;
 		
 
 			// Copy the screenshot file to the destination
@@ -157,42 +153,8 @@ public class SeleniumUtility {
 		driver.close();
 	}
 
-	public void rightClick(WebElement option) {
-		action.moveToElement(option).contextClick().build().perform();
-	}
 
-	public void mouseHoverWithCords(WebElement option, int x, int y) {
-		action.moveToElement(option, x, y).perform();
-	}
-
-	public void mouseHover(WebElement element) {
-		action.moveToElement(element).perform();
-	}
-
-	public void doubleClick(WebElement element) {
-		action.moveToElement(element).doubleClick().perform();
-	}
-
-	public void switchToRequiredFrameUsingName(String name) {
-		driver.switchTo().frame(name);
-	}
-
-	public void switchToRequiredFrameUsingWebElement(WebElement element) {
-		driver.switchTo().frame(element);
-	}
-
-	public void switchToRequiredFrameUsingIndex(int index) {
-		driver.switchTo().frame(index);
-	}
-
-	public void switchControlBackToMainPage() {
-		driver.switchTo().defaultContent();
-	}
-
-	public WebElement getActiveElement() {
-		return driver.switchTo().activeElement();
-	}
-
+	
 	public String getPageTitle() {
 		return driver.getTitle();
 	}

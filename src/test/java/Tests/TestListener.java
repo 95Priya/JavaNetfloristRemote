@@ -16,12 +16,13 @@ import Utilities.SeleniumUtility;
 @Listeners(TestListener.class)
 public class TestListener implements ITestListener
 {
-	private ExtentReports extent;
+	//private ExtentReports extent;
 	private WebDriver driver;
     private SeleniumUtility S1;
     
-    public TestListener() {
-        
+    public TestListener() 
+    {
+    	this.driver = driver;
     	 S1 = new SeleniumUtility(driver);
     }
 
@@ -46,8 +47,8 @@ public class TestListener implements ITestListener
     public void onTestFailure(ITestResult result) 
     {
     	String methodName = result.getMethod().getMethodName();
-        captureScreenshot(methodName);
-    }
+    	S1.takeScreenshot(methodName);   
+    	}
 
    
     @Override
@@ -68,21 +69,17 @@ public class TestListener implements ITestListener
     @Override
     public void onStart(ITestContext context)
     {
-    	String extentReportPath = ".\\src\\test\\resources\\ExtentReports\\ExtentReport.html";
-    	extent = new ExtentReports();
-        ExtentSparkReporter spark = new ExtentSparkReporter(extentReportPath);
-        extent.attachReporter(spark);
+//    	String extentReportPath = ".\\src\\test\\resources\\ExtentReports\\ExtentReport.html";
+//    	//extent = new ExtentReports();
+//        ExtentSparkReporter spark = new ExtentSparkReporter(extentReportPath);
+//        //extent.attachReporter(spark);
     }
 
     @Override
     public void onFinish(ITestContext context)
     {
-    	extent.flush(); 
+    	//extent.flush(); 
     }
 
-    private void captureScreenshot(String methodName)
-    {
-       
-        S1.takeScreenshot(methodName);
-   }
+  
 }

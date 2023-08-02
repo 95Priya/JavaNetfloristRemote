@@ -8,9 +8,7 @@
     
     <test name="Test">
         <classes>
-            <class name="Tests.FlowerProduct">
-                </class>
-            
+            <class name="Tests.FlowerProduct"/>
         </classes>
     </test>
 </suite>

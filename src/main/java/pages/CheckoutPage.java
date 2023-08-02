@@ -40,7 +40,7 @@ public class CheckoutPage
 	
 	 public void clickOnDeliveryInfo()
 	 {
-	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 	      
 
 	        WebElement deliveryInfoElement = wait.until(ExpectedConditions.elementToBeClickable(deliveryInfo));
@@ -54,7 +54,7 @@ public class CheckoutPage
 
 	 public void clickOnPaymentOptions() 
 	 {
-		    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 		    wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loaderMask")));
 
 		    WebElement paymentOptionsElement = wait.until(ExpectedConditions.elementToBeClickable(paymentOptions));
@@ -87,7 +87,7 @@ public class CheckoutPage
 		
 		public void clickOnPayWithCard()
 		{
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 			
 			WebElement cardPayment = wait.until(ExpectedConditions.elementToBeClickable(payWithCard));
 

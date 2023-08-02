@@ -31,13 +31,14 @@ public class FlowerProduct
     @BeforeMethod
 	    public void setup() 
 	 {
+    	    
 		    baseSearchTest = new SearchForProductTest();
 	        baseSearchTest.setup();
-	        S1 = new SeleniumUtility(baseSearchTest.driver); 
+	        //S1 = new SeleniumUtility(baseSearchTest.driver); 
 	    }
 
     @Test
-    public void FlowerAdd1() throws InterruptedException, TimeoutException 
+    public void FlowerAdd1() throws InterruptedException
     {
     	
     	productCode = baseSearchTest.getProperty("productcode1");
@@ -47,7 +48,7 @@ public class FlowerProduct
     }
     
     @Test
-    public void FlowerAdd2() throws InterruptedException, TimeoutException 
+    public void FlowerAdd2() throws InterruptedException
     {
     	
     	productCode = baseSearchTest.getProperty("productcode1");
@@ -57,7 +58,7 @@ public class FlowerProduct
     }
     
     @Test
-    public void FlowerAdd3() throws InterruptedException, TimeoutException 
+    public void FlowerAdd3() throws InterruptedException
     {
     	
     	productCode = baseSearchTest.getProperty("productcode1");
@@ -66,7 +67,7 @@ public class FlowerProduct
         baseSearchTest.SearchProduct(productCode, address, addressType);
     }
     @Test
-    public void FlowerAdd4() throws InterruptedException, TimeoutException 
+    public void FlowerAdd4() throws InterruptedException
     {
     	
     	productCode = baseSearchTest.getProperty("productcode1");

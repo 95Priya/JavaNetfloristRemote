@@ -57,6 +57,7 @@ public class SearchForProductTest extends ConfigFileReader {
 	    WebDriverManager.chromedriver().setup();
 	    ChromeOptions options = new ChromeOptions();
 	    options.setPageLoadStrategy(PageLoadStrategy.EAGER);
+	    
 	    driver = new ChromeDriver(options);
 	    driver.manage().window().maximize();
 	    S1 = new SeleniumUtility(driver);
@@ -69,10 +70,10 @@ public class SearchForProductTest extends ConfigFileReader {
 	}
 
 	public void SearchProduct(String productCode, String address, String addressType)
-			throws InterruptedException, TimeoutException {
+			throws InterruptedException {
 
 		productSearch.clickOnSearch(productCode);
-		productSearch.selectProduct();
+		productSearch.selectAndClickProduct();
 		productSearch.addToBasket();
 		username = configFileReader.getProperty("username");
 		password = configFileReader.getProperty("password");

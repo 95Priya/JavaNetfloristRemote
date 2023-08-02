@@ -50,33 +50,30 @@ public class ProductSearchHomePage {
 	
 	@FindBy(xpath = "//*[@id='inputSearch']")
 	private WebElement searchField;
+	
+//	@FindBy(xpath = "//*[@id='SearchButton']")
+//	private WebElement searchButton;
 
-	public void clickOnSearch(String productCode) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60)); // Adjust the timeout value as needed
+	public void clickOnSearch(String productCode) 
+	{
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30)); // Adjust the timeout value as needed
 		wait.until(ExpectedConditions.visibilityOf(searchField));
 
 		searchField.sendKeys(productCode);
 		searchField.sendKeys(Keys.ENTER);
+		//searchButton.click();
 	}
 
-	
-//	public List<WebElement> getProductsList()
-//	{
-//		return driver.findElements(By.xpath("//*[@id='SearchContainer']/div/div/div/div[4]/div[2]/div/a"));
-//
-//	}
+	@FindBy(xpath = "//*[@id='ctl00_MainContent_RPTList_ctl00_IMGProduct']")
+	private WebElement productList;
 
-	
-	public void selectProduct()
+	public void selectAndClickProduct()
 	{
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-	    By elementLocator = By.xpath("//*[@id='SearchContainer']/div/div/div/div[4]/div[2]/div/a[1]");
-
-	    WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(elementLocator));
-		System.out.println("Product Name is : " + element.getText());
-		element.click();
+		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+	    wait.until(ExpectedConditions.visibilityOfAllElements(productList));
+	    productList.click();
 	}
-
 
 	
 	@FindBy(id = "ButtonBottomArea")
@@ -84,7 +81,7 @@ public class ProductSearchHomePage {
 
 	public void addToBasket() 
 	{
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.elementToBeClickable(addToBasket));
 		addToBasket.click();
 	}
@@ -251,4 +248,3 @@ public class ProductSearchHomePage {
      }
 	
 	}
-
