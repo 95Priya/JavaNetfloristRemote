@@ -5,7 +5,7 @@
     <classes>
       <class name="Tests.FlowerProduct">
         <methods>
-          <include name="FlowerAdd2"/>
+          <include name="FlowerAdd3"/>
           <include name="setup"/>
           <include name="close"/>
         </methods>

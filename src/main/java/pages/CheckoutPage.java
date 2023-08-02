@@ -50,17 +50,18 @@ public class CheckoutPage
 	    }
 
 	 
-	 @FindBy(css = "li.iconDCSprite.deliveryInfo.deliveryTab')]")
+	 @FindBy(css = "#ProgressBar > ul > li.iconDCSprite.paymentOptions.active.paymentTab")
 		private WebElement paymentOptions;
 
 
-	 public void clickOnPaymentOptions()
+	 public void clickOnPaymentOptions() throws InterruptedException
 	 {
 		 System.out.println("Trying to find the paymentOptions element...");
 		 
 	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 	        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loaderMask")));
 	        WebElement paymentInfoElement = wait.until(ExpectedConditions.elementToBeClickable(paymentOptions));
+	        Thread.sleep(500);
 	        paymentInfoElement.click();
 	        System.out.println("Clicked on the paymentOptions element successfully!");
 	    }
