@@ -32,7 +32,7 @@ public class CheckoutPage
 	
 	public void clickcheckOutButton() 
 	 {
-	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 	        WebElement checkOutButtonElemet = wait.until(ExpectedConditions.visibilityOf(checkOutButton));
 
 	        checkOutButtonElemet.click();
