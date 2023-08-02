@@ -144,6 +144,7 @@ public class SearchForProductTest extends ConfigFileReader {
 		checkout.clickcheckOutButton();
 		checkout.clickOnDeliveryInfo();
 		checkout.clickOnPaymentOptions();
+		
 		checkout.clickOnPayWithCard();
 
 		String cardnum = configFileReader.getProperty("CardNum");
@@ -151,6 +152,7 @@ public class SearchForProductTest extends ConfigFileReader {
 		String securityCode = configFileReader.getProperty("SecurityCode");
 		String expireMonth = configFileReader.getProperty("ExpirationMonth");
 		String expireYear = configFileReader.getProperty("ExpirationYear");
+		Thread.sleep(3000);
 		checkout.fillCardDetails(cardnum, expireMonth, expireYear, cardHolder, securityCode);
 
 	}
@@ -163,6 +165,6 @@ public class SearchForProductTest extends ConfigFileReader {
 			String methodName = result.getMethod().getMethodName();
 			S1.takeScreenshot(methodName);
 		}
-		driver.quit();
+		//driver.quit();
 	}
 }
