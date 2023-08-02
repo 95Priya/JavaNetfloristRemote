@@ -73,7 +73,7 @@ public class SearchForProductTest extends ConfigFileReader {
 			throws InterruptedException {
 
 		productSearch.clickOnSearch(productCode);
-		productSearch.selectAndClickProduct();
+		productSearch.selectProduct();
 		productSearch.addToBasket();
 		username = configFileReader.getProperty("username");
 		password = configFileReader.getProperty("password");
