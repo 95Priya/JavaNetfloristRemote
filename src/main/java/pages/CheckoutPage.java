@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -49,19 +50,22 @@ public class CheckoutPage
 	    }
 
 	 
-	 @FindBy(css = "li.iconDCSprite.paymentOptions.paymentTab")
+	 @FindBy(css = "li.iconDCSprite.deliveryInfo.deliveryTab')]")
 		private WebElement paymentOptions;
 
-	 public void clickOnPaymentOptions() 
-	 {
-		    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-		    wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loaderMask")));
 
-		    WebElement paymentOptionsElement = wait.until(ExpectedConditions.elementToBeClickable(paymentOptions));
-		    JavascriptExecutor executor = (JavascriptExecutor) driver;
-		    executor.executeScript("arguments[0].click();", paymentOptionsElement);
-		}
-	 
+	 public void clickOnPaymentOptions()
+	 {
+		 System.out.println("Trying to find the paymentOptions element...");
+		 
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+	        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loaderMask")));
+	        WebElement paymentInfoElement = wait.until(ExpectedConditions.elementToBeClickable(paymentOptions));
+	        paymentInfoElement.click();
+	        System.out.println("Clicked on the paymentOptions element successfully!");
+	    }
+
+
 		
 		@FindBy(xpath = "//input[@id='btnNonSouthAfricaVisaMaster']")
 		private WebElement payWithCard;

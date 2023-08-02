@@ -23,7 +23,7 @@ public class TestListener implements ITestListener
     public TestListener() 
     {
     	this.driver = driver;
-    	 S1 = new SeleniumUtility(driver);
+    	 //S1 = new SeleniumUtility(driver);
     }
 
 	
@@ -42,13 +42,13 @@ public class TestListener implements ITestListener
 
 
 	    }
-
-    @Override
-    public void onTestFailure(ITestResult result) 
-    {
-    	String methodName = result.getMethod().getMethodName();
-    	S1.takeScreenshot(methodName);   
-    	}
+//
+//    @Override
+//    public void onTestFailure(ITestResult result) 
+//    {
+//    	String methodName = result.getMethod().getMethodName();
+//    	S1.takeScreenshot(methodName);   
+//    	}
 
    
     @Override

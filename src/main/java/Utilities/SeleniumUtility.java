@@ -36,10 +36,10 @@ public class SeleniumUtility {
 	public static Actions action = null;
 	public WebDriverWait wait;
 
-	public SeleniumUtility(WebDriver driver) 
+	public SeleniumUtility(WebDriver driver)
 	{
-		
-		this.ts = (TakesScreenshot) driver;
+	    this.driver = driver;
+	    this.ts = (TakesScreenshot) driver;
 	}
 
 	public WebDriver setUp(String browserName, String appUrl) {
