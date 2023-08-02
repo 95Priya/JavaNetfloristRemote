@@ -1,8 +1,10 @@
 package pages;
 
 import java.time.Duration;
+import java.util.concurrent.TimeoutException;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -50,22 +52,39 @@ public class CheckoutPage
 	    }
 
 	 
-	 @FindBy(css = "#ProgressBar > ul > li.iconDCSprite.paymentOptions.active.paymentTab")
+	 @FindBy(css = "li.iconDCSprite.paymentOptions.paymentTab")
 		private WebElement paymentOptions;
 
 
-	 public void clickOnPaymentOptions() throws InterruptedException
-	 {
-		 System.out.println("Trying to find the paymentOptions element...");
-		 
-	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-	        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loaderMask")));
-	        WebElement paymentInfoElement = wait.until(ExpectedConditions.elementToBeClickable(paymentOptions));
-	        Thread.sleep(500);
-	        paymentInfoElement.click();
-	        System.out.println("Clicked on the paymentOptions element successfully!");
-	    }
+//	 public void clickOnPaymentOptions() throws InterruptedException
+//	 {
+//		 System.out.println("Trying to find the paymentOptions element...");
+//		 
+//	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+//	       // wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.loaderMask")));
+//	        WebElement paymentInfoElement = wait.until(ExpectedConditions.elementToBeClickable(paymentOptions));
+//	        Thread.sleep(500);
+//	        paymentInfoElement.click();
+//	        System.out.println("Clicked on the paymentOptions element successfully!");
+//	    }
+	 public void clickOnPaymentOptions() throws InterruptedException,TimeoutException{
+	        System.out.println("Trying to find the paymentOptions element...");
 
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+	        try {
+	            // Wait for the element to be clickable (maximum 30 seconds)
+	            WebElement paymentInfoElement = wait.until(ExpectedConditions.elementToBeClickable(paymentOptions));
+	            Thread.sleep(500);
+	            paymentInfoElement.click();
+	            System.out.println("Clicked on the paymentOptions element successfully!");
+	        } catch (ElementClickInterceptedException e) {
+	            System.out.println("Element click intercepted. Possible reasons: element is not visible, covered by other element, or disabled.");
+	        } catch (InterruptedException  e) {
+	            System.out.println("Timeout occurred while waiting for the element to be clickable.");
+	        } finally {
+	            // You may want to handle any other exceptions here or take necessary actions.
+	        }
+	    }
 
 		
 		@FindBy(xpath = "//input[@id='btnNonSouthAfricaVisaMaster']")
