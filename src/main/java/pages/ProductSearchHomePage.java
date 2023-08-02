@@ -67,7 +67,7 @@ public class ProductSearchHomePage {
 	@FindBy(xpath = "//*[@id='ctl00_MainContent_RPTList_ctl00_IMGProduct']")
 	private WebElement productList;
 
-	public void selectAndClickProduct()
+	public void selectProduct()
 	{
 		
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
