@@ -70,7 +70,7 @@ public class ProductSearchHomePage {
 	public void selectProduct()
 	{
 		
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(2));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
 	    wait.until(ExpectedConditions.visibilityOfAllElements(productList));
 	    productList.click();
 	}
