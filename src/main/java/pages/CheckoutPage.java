@@ -2,6 +2,7 @@ package pages;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.concurrent.TimeoutException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -30,13 +31,14 @@ public class CheckoutPage
 	private WebElement checkOutButton;
 	
 	
-	public void clickcheckOutButton() 
+	public void clickcheckOutButton()
 	 {
 		System.out.println("Click on Checkout Button");
-	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(180));
 	        WebElement checkOutButtonElemet = wait.until(ExpectedConditions.elementToBeClickable(checkOutButton));
 
 	        checkOutButtonElemet.click();
+	        System.out.println("Click Successfully");
 	    }
 	
 @FindBy(xpath="//div[@id='ProgressBar']/ul/li[2]")
@@ -45,6 +47,7 @@ private WebElement deliveryInfoElement;
 
 public void clickOnDeliveryInfo() throws InterruptedException
 {
+	System.out.println("Click on delivery Option");
 	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 	WebElement deliveryElement=wait.until(ExpectedConditions.elementToBeClickable(deliveryInfoElement));
 	deliveryElement.click();
@@ -55,7 +58,9 @@ public void clickOnDeliveryInfo() throws InterruptedException
 //@FindBy(xpath="//div[@id='ProgressBar']/ul/li[3]")
 //private WebElement paymentInfoElement;
 
-public void clickOnPaymentOptions() throws InterruptedException {
+public void clickOnPaymentOptions() throws InterruptedException 
+{
+	System.out.println("Click on Payment Option");
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
     WebElement paymentInfoElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='ProgressBar']/ul/li[3]")));
     JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;

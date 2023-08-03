@@ -65,6 +65,7 @@ public class ProductSearchHomePage {
 	}
 
 	@FindBy(xpath = "//*[@id='ctl00_MainContent_RPTList_ctl00_IMGProduct']")
+         //@FindBy(xpath ="//*[@id='SearchContainer']/div/div/div/div[4]/div[2]/div/a[1]")
 	private WebElement productList;
 
 	public void selectProduct()
