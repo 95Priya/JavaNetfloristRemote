@@ -2,20 +2,20 @@
 <testng-results ignored="3" total="4" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-08-03T09:56:14 IST" name="Test Suite" finished-at="2023-08-03T09:58:00 IST" duration-ms="106283">
+  <suite started-at="2023-08-03T10:22:36 IST" name="Test Suite" finished-at="2023-08-03T10:23:32 IST" duration-ms="56301">
     <groups>
     </groups>
-    <test started-at="2023-08-03T09:56:14 IST" name="Test" finished-at="2023-08-03T09:58:00 IST" duration-ms="106283">
+    <test started-at="2023-08-03T10:22:36 IST" name="Test" finished-at="2023-08-03T10:23:32 IST" duration-ms="56301">
       <class name="Tests.FlowerProduct">
-        <test-method is-config="true" signature="setup()[pri:0, instance:Tests.FlowerProduct@63798ca7]" started-at="2023-08-03T09:56:14 IST" name="setup" finished-at="2023-08-03T09:57:03 IST" duration-ms="49439" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:Tests.FlowerProduct@63798ca7]" started-at="2023-08-03T10:22:36 IST" name="setup" finished-at="2023-08-03T10:22:42 IST" duration-ms="5917" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="FlowerAdd1()[pri:0, instance:Tests.FlowerProduct@63798ca7]" started-at="2023-08-03T09:57:03 IST" name="FlowerAdd1" finished-at="2023-08-03T09:58:00 IST" duration-ms="56812" status="PASS">
+        <test-method signature="FlowerAdd1()[pri:0, instance:Tests.FlowerProduct@63798ca7]" started-at="2023-08-03T10:22:42 IST" name="FlowerAdd1" finished-at="2023-08-03T10:23:32 IST" duration-ms="50352" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- FlowerAdd1 -->
-        <test-method is-config="true" signature="close(org.testng.ITestResult)[pri:0, instance:Tests.FlowerProduct@63798ca7]" started-at="2023-08-03T09:58:00 IST" name="close" finished-at="2023-08-03T09:58:00 IST" duration-ms="2" status="PASS">
+        <test-method is-config="true" signature="close(org.testng.ITestResult)[pri:0, instance:Tests.FlowerProduct@63798ca7]" started-at="2023-08-03T10:23:32 IST" name="close" finished-at="2023-08-03T10:23:32 IST" duration-ms="4" status="PASS">
           <params>
             <param index="0">
               <value>

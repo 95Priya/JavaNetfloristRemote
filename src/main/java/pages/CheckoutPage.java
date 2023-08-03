@@ -26,14 +26,14 @@ public class CheckoutPage
 	
 	
 	
-	@FindBy(xpath = "//a[contains(text(),'Checkout')]")
+	@FindBy(xpath = "//div[@class='msbFoot clearFix']/div[2]")
 	private WebElement checkOutButton;
 	
 	
 	public void clickcheckOutButton() 
 	 {
-	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(2));
-	        WebElement checkOutButtonElemet = wait.until(ExpectedConditions.visibilityOf(checkOutButton));
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+	        WebElement checkOutButtonElemet = wait.until(ExpectedConditions.elementToBeClickable(checkOutButton));
 
 	        checkOutButtonElemet.click();
 	    }
