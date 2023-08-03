@@ -32,6 +32,7 @@ public class CheckoutPage
 	
 	public void clickcheckOutButton() 
 	 {
+		System.out.println("Click on Checkout Button");
 	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
 	        WebElement checkOutButtonElemet = wait.until(ExpectedConditions.elementToBeClickable(checkOutButton));
 
